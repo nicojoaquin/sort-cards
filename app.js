@@ -11,7 +11,6 @@ let palos = ["diamonds", "hearts", "clubs", "spades"];
 let valores = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Q", "K", "J", "A" ];
 let cartas = [];
 
-//Iteramos en los arreglos de palos y valores para formar las 52 combinaciones
 for (palo of palos) {
   for(valor of valores) {
     cartas.push({valor, palo});
@@ -20,6 +19,8 @@ for (palo of palos) {
 
 let cartasRandom = [];
 
+//Agregamos n cantidad de cartas random al array(n es lo que escribe el usuario en el input)
+//Si la carta ya existe en el array, volvemos a llamar la funcion hasta que no exista y se agregue
 const getRandomCards = (n) => {
   cartasRandom = [];
   for (let i = 0; i < n; i++) {
@@ -37,6 +38,7 @@ const getRandomCards = (n) => {
   displayCardsA();
 }
 
+//Listamos las cartas recorriendo el array 
 const displayCardsA = () => {
   containerA.innerHTML = '';
   cartasRandom.forEach( ({palo, valor}) => {
@@ -53,6 +55,8 @@ const displayCardsA = () => {
   })
 }
 
+//Verificamos que el rango que eligio el usuario este entre 4 y 10
+//Si esta todo bien obtenemos la cantidad de cartas elegidas
 btnDraw.addEventListener('click', () => {
   const qty = cardQty.value;
   if( qty < 4 || qty > 10) {
