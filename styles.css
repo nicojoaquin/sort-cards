@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: green;
+}
+
+.config {
+  display: flex;
+  align-items: center;
+  padding: 2.5rem;
+  gap: 1rem;
+}
+
+.config input {
+  width: 3%;
+}
+
+.cards-container-a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2.5rem;
+}
+
+.card {
+  width: 80px;
+  height: 100px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-size: 1.2rem;
+  padding: 0.2rem;
+  border-radius: 5px;
+}
+
+.card-num {
+  text-align: center;
+}
+
+.card-draw {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.diamonds span,
+.hearts span {
+  color: red;
+}
+
+.clubs span,
+.spades span {
+  color: black;
+}
