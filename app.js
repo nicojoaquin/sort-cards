@@ -21,7 +21,6 @@ for (palo of palos) {
 let cartasRandom = [];
 
 const getRandomCards = (n) => {
-  containerA.innerHTML = '';
   cartasRandom = [];
   for (let i = 0; i < n; i++) {
     const cartaRandom = cartas[getRandomNum(0, cartas.length)]
@@ -39,6 +38,7 @@ const getRandomCards = (n) => {
 }
 
 const displayCardsA = () => {
+  containerA.innerHTML = '';
   cartasRandom.forEach( ({palo, valor}) => {
     let entity; 
     palo === 'diamonds' ? entity = 'diams' : entity = palo;
