@@ -1,4 +1,5 @@
 const containerA = document.querySelector('.cards-container-a');
+const containerB = document.querySelector('.cards-container-b');
 const cardQty = document.querySelector('#card-qty');
 const btnDraw = document.querySelector('#draw');
 const btnSort = document.querySelector('#sort');
@@ -35,16 +36,17 @@ const getRandomCards = (n) => {
     };
     cartasRandom.push(cartaRandom)
   }
-  displayCardsA();
+  displayCards(cartasRandom, containerA);
 }
 
 //Listamos las cartas recorriendo el array 
-const displayCardsA = () => {
-  containerA.innerHTML = '';
-  cartasRandom.forEach( ({palo, valor}) => {
+const displayCards = (array, contenedor) => {
+  containerB.innerHTML = ''
+  contenedor.innerHTML = '';
+  array.forEach( ({palo, valor}) => {
     let entity; 
     palo === 'diamonds' ? entity = 'diams' : entity = palo;
-    containerA.innerHTML += 
+    contenedor.innerHTML += 
     `
       <article class="card ${palo}">
         <span>&${entity};</span>
@@ -68,3 +70,24 @@ btnDraw.addEventListener('click', () => {
 });
 
 
+const sort  = (arr) => {
+  
+  let bubbleSortedCards = []
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - 1; j++) {  
+      if(arr[j].valor > arr[j + 1].valor || ["Q", "A", "J", "K"].includes(arr[j].valor)) {
+        const num = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] =  num;
+      };
+    };
+  };
+  bubbleSortedCards.push(...arr)
+  return bubbleSortedCards
+}
+
+btnSort.addEventListener('click', () => {
+  const cartasSorted = sort(cartasRandom)
+  displayCards(cartasSorted, containerB)
+});
